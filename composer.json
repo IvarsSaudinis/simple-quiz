@@ -1,5 +1,14 @@
 {
     "require": {
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.0",
+        "josantonius/session": "^2.0",
+        "catfan/medoo": "^2.1"
+    },
+    "autoload": {
+        "files": [
+            "controllers/User.php",
+            "controllers/Quiz.php",
+            "controllers/Results.php"
+        ]
     }
 }
