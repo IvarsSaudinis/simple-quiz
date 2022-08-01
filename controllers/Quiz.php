@@ -89,6 +89,7 @@ class Quiz
 		$user = $this->user->getName();
 
 		echo $this->user->render( 'results', compact('correct_count', 'count', 'user'));
+		die();
 	}
 	// nosaka visu jēgu
 

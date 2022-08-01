@@ -1,9 +1,9 @@
 <?php
 require '../vendor/autoload.php';
 
-
 $user = new User();
 
+// POST/GET neliela apstrāde
 $user->checkRequest();
 
 
@@ -18,8 +18,8 @@ if ( $user->isUserReady() ) {
 	$csrf = $user->setCsrf();
 
 	// dati frontendam
-	$count =  $user->getSession('total_count') - $user->getSession('count') ;
-	$total_count =  $user->getSession('total_count');
+	$count =  $user->getSession('total_count') - $user->getSession('count') ?? '' ;
+	$total_count =  $user->getSession('total_count') ?? '';
 
 	echo $user->render( 'quiz', compact( 'question', 'answers', 'csrf', 'total_count', 'count'  ) );
 
@@ -33,6 +33,6 @@ if ( $user->isUserReady() ) {
 
 }
 
-//dd($_SESSION);
+//echo dd($_SESSION);
 
 ?>

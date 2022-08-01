@@ -119,7 +119,7 @@ class User {
 	 */
 	public function render( $view, $valuesArray = [] )
 	{
-		echo $this->template->render( $view . '.twig', $valuesArray );
+		return $this->template->render( $view . '.twig', $valuesArray );
 		die();
 	}
 
@@ -150,6 +150,12 @@ class User {
 				}
 				$this->setCsrf();
 			}
+			// ja nav ievadīts vārds
+			if ( empty( $_POST['name']) &&  ! empty( $_POST['quiz_id'] )) {
+
+				echo $this->render('error');
+				die();
+			}
 
 			// testa formas datu nosūtīšana
 			if ( ! empty( $_POST['question'] ) && ! empty( $_POST['answer'] ) ) {
@@ -157,7 +163,7 @@ class User {
 					// saglabā izvēli datubāzē un noņem jautājumu no jautajumu masīva
 					$result = new Results();
 					$result->save( $this->getUserId(), $_POST['question'], $_POST['answer'] );
-
+					$this->setCsrf();
 				}
 			}
 
@@ -167,6 +173,7 @@ class User {
 		if ( isset( $_GET['end_quiz'] ) ) {
 			$this->endQuiz();
 		}
+
 	}
 
 	/**
