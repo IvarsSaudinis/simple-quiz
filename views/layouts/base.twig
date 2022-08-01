@@ -2,15 +2,22 @@
 <html>
 <head>
     {% block head %}
-    <link rel="stylesheet" href="style.css"/>
-    <title>{% block title %}{% endblock %} - My Webpage</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <title>{% block title %}{% endblock %} - viktorīna</title>
     {% endblock %}
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #f5f5f5;
+        }
+    </style>
 </head>
 <body>
-<h1>Nosaukums</h1>
-<div id="content">{% block content %}{% endblock %}</div>
-<hr/>
+<div id="content" class="px-4 py-5 my-5 text-center">{% block content %}{% endblock %}</div>
+
 
 
 </body>
+<script src="js/bootstrap.bundle.min.js"></script>
 </html>

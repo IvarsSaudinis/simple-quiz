@@ -3,30 +3,32 @@
 {% block title %}{{ title }}{% endblock %}
 {% block head %}
     {{ parent() }}
-    <style type="text/css">
-        .important {
-            color: #336699;
-        }
-    </style>
+
 {% endblock %}
 {% block content %}
 
-    <h1> Laipni lūgti. Ievadi vārdu un izvēlies viktorīnas tēmu</h1>
+    <h1 class="display-5 mb-5">Ievadi vārdu un izvēlies viktorīnas tēmu</h1>
 
 
-<form method="post" action="">
-    <input name="csrf" type="hidden" value="{{ csrf }}">
-    Name:
-    <input type="text" name="name">
-    Tēma
-    <select name="quiz_id">
-        {% for quiz in quizzes %}
-        <option value="{{ quiz['id'] }}">{{ quiz['name'] }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit">
-</form>
-
+    <div class="row">
+        <form method="post" action="/">
+            <input name="csrf" type="hidden" value="{{ csrf }}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Vārds</label>
+                <input name="name" type="name" class="form-control" id="name">
+            </div>
+            <div class="mb-3">
+                <label for="quiz_id" class="form-label">Tēma</label>
+                <select class="form-select" name="quiz_id">
+                    <option disabled>Tēmas izvēle...</option>
+                    {% for quiz in quizzes %}
+                        <option value="{{ quiz['id'] }}">{{ quiz['name'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Sākt</button>
+        </form>
+    </div>
 
 
 {% endblock %}

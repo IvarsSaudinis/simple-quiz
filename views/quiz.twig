@@ -14,30 +14,27 @@
     <form method="post">
         <input type="hidden" name="csrf" value="{{ csrf }}">
         <input type="hidden" name="question" value="{{ question['id'] }}" >
-        <p>
-            Jautājums:{{ question['text'] }}
-        </p>
-        Iespējamās atbildes:
-        <ul>
+        <h1 class="text-center">
+          {{ question['text'] }}
+        </h1>
+
+        <div class="row">
             {% for answer in answers  %}
-                <button name="answer" type="submit" value="{{ answer['id'] }}">{{ answer['text'] }}</button>
+                <div class="col-md-6 mt-4">
+                    <button class="btn btn-lg btn-primary w-100" name="answer" type="submit" value="{{ answer['id'] }}">{{ answer['text'] }}</button>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
 
-        Progress:
-        <p>
-            Atbildēti {{ count }} no {{ total_count }} jautājumiem
-
-        </p>
-        <p>
-            <progress id="progress" value="{{ count }}" max="{{ total_count }}"> 32% </progress>
+        <p class="mt-5">
+            <progress class="w-100" id="progress" value="{{ count }}" max="{{ total_count }}" title="Atbildēti {{ count }} no {{ total_count }} jautājumiem">{{ count }} no {{ total_count }} </progress>
         </p>
     </form>
 
 
 
 <hr/>
-    beigt testu: <a href="/?end_quiz=2">beigt!</a>
+      <a class="btn btn-button" href="/?end_quiz=2">Pārtraukt testu!</a>
 
 
 {% endblock %}
