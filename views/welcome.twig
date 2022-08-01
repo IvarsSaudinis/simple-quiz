@@ -1,0 +1,32 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important {
+            color: #336699;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <h1> Laipni lūgti. Ievadi vārdu un izvēlies viktorīnas tēmu</h1>
+
+
+<form method="post" action="">
+    <input name="csrf" type="hidden" value="{{ csrf }}">
+    Name:
+    <input type="text" name="name">
+    Tēma
+    <select name="quiz_id">
+        {% for quiz in quizzes %}
+        <option value="{{ quiz['id'] }}">{{ quiz['name'] }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
+
+
+
+{% endblock %}

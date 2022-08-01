@@ -1,0 +1,43 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+{{ parent() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+    <form method="post">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <input type="hidden" name="question" value="{{ question['id'] }}" >
+        <p>
+            Jautājums:{{ question['text'] }}
+        </p>
+        Iespējamās atbildes:
+        <ul>
+            {% for answer in answers  %}
+                <button name="answer" type="submit" value="{{ answer['id'] }}">{{ answer['text'] }}</button>
+            {% endfor %}
+        </ul>
+
+        Progress:
+        <p>
+            Atbildēti {{ count }} no {{ total_count }} jautājumiem
+
+        </p>
+        <p>
+            <progress id="progress" value="{{ count }}" max="{{ total_count }}"> 32% </progress>
+        </p>
+    </form>
+
+
+
+<hr/>
+    beigt testu: <a href="/?end_quiz=2">beigt!</a>
+
+
+{% endblock %}

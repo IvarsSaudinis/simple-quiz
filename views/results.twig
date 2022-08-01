@@ -1,0 +1,22 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important {
+            color: #336699;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <h1>Paldies, {{ user }}!</h1>
+    <h2>Tu atbildēji pareizi uz {{ correct_count }} no {{  count }} jautājumiem</h2>
+
+    <hr/>
+    <a href="/?end_quiz=13">Sākt no sākuma</a>
+
+
+
+{% endblock %}

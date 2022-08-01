@@ -1,0 +1,20 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important {
+            color: #336699;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <h1>Kļūda. Nebija ievadīti nepieciešamie dati</h1>
+
+    <a href="/">atgriezties</a>
+
+
+
+{% endblock %}
